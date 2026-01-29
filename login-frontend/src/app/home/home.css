@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+p {
+    font-size: 2em; /* Adjust size as needed */
+    text-align: center;
+}
+
+button {
+    padding: 8px 12px;
+}
