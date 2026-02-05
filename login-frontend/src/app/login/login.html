@@ -1,30 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="login.css"> <!-- Link to your CSS file -->
-</head>
-<body>
-    <div class="login-container">
-        <h1>BMO Login</h1>
-        <form (ngSubmit)="onSubmit()">
-            <div>
-                <label for="username">Username</label><br />
-                <input id="username" name="username" type="text" [(ngModel)]="username" />
-            </div>
-            <br />
-            <div>
-                <label for="password">Password</label><br />
-                <input id="password" name="password" type="password" [(ngModel)]="password" />
-            </div>
-            <br />
-            <button type="submit" [disabled]="loading">
-                {{ loading ? 'Logging in...' : 'Login' }}
-            </button>
-            <p class="error" [hidden]="!errorMessage">{{ errorMessage }}</p>
-        </form>
+<div class="page">
+    <div class="card">
+      <div class="brand">
+        <img src="/assets/BMOlogo.png" alt="company-logo" class="logo" aria-hidden="true" />
+        <h1>Sign in</h1>
+        <p class="subtitle">Enter your credentials to continue</p>
+      </div>
+  
+      <form class="form" (ngSubmit)="onSubmit()">
+        <div class="field">
+          <label for="username">Username</label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            class="control"
+            [(ngModel)]="username"
+            autocomplete="username"
+            required
+          />
+        </div>
+  
+        <div class="field">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            class="control"
+            [(ngModel)]="password"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+  
+        <div class="field">
+          <label for="domain">Domain</label>
+          <select
+            id="domain"
+            name="domain"
+            class="control"
+            [(ngModel)]="domain"
+            required
+          >
+            <option value="" disabled>Select a domain</option>
+            <option value="officeqa">officeqa</option>
+            <option value="ibgqa">ibgqa</option>
+          </select>
+        </div>
+  
+        <button type="submit" class="btn" [disabled]="loading">
+          <span class="spinner" *ngIf="loading" aria-hidden="true"></span>
+          {{ loading ? 'Logging in...' : 'Login' }}
+        </button>
+  
+        <p class="error" [hidden]="!errorMessage">{{ errorMessage }}</p>
+      </form>
     </div>
-</body>
-</html>
+  </div>
+  

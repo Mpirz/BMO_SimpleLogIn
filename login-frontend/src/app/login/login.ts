@@ -14,6 +14,7 @@ import { ChangeDetectorRef } from '@angular/core';
 export class Login {
   username = '';
   password = '';
+  domain = ' ;'
 
     errorMessage = '';
     loading = false;
@@ -23,7 +24,7 @@ export class Login {
     onSubmit() {
       this.loading = true;
       this.errorMessage = '';
-      this.auth.login({ username: this.username, password: this.password }).subscribe({
+      this.auth.login({ username: this.username, password: this.password, domain: this.domain }).subscribe({
         next: (res) => {
           this.loading = false;
           this.router.navigate(['/home']);
